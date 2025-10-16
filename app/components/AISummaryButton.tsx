@@ -1,8 +1,10 @@
+
+
 "use client";
 
 import { useState } from "react";
 
-export default function GitHubAnalyzer({ username }) {
+export default function GitHubAnalyzer({ username }: { username: string }) {
   const [summary, setSummary] = useState("");
   const [loading, setLoading] = useState(false);
 

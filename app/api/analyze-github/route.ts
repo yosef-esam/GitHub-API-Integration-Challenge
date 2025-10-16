@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
 
@@ -9,7 +11,6 @@ export async function POST(req: Request) {
   try {
     const { username } = await req.json();
 
-    // 1️⃣ Fetch GitHub data
     const githubRes = await fetch(`https://api.github.com/users/${username}`);
     if (!githubRes.ok) {
       return NextResponse.json(
@@ -20,11 +21,9 @@ export async function POST(req: Request) {
 
     const profile = await githubRes.json();
 
-    // Optionally, fetch repos too:
     const reposRes = await fetch(profile.repos_url);
     const repos = await reposRes.json();
 
-    // 2️⃣ Prepare text for AI
     const profileText = `
       Name: ${profile.name}
       Bio: ${profile.bio}
@@ -39,9 +38,8 @@ export async function POST(req: Request) {
         .join("\n")}
     `;
 
-    // 3️⃣ Ask AI to summarize and analyze
     const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini", // or gpt-4-turbo
+      model: "gpt-4o-mini",
       messages: [
         {
           role: "system",

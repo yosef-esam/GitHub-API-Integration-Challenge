@@ -1,12 +1,12 @@
-// components/UserCard.tsx
 import React from "react";
 import { GitHubUser } from "../components/types/github";
+import Image from "next/image";
 
 export default function UserCard({ user }: { user: GitHubUser }) {
   return (
     <div className="bg-white rounded shadow p-4">
       <div className="flex items-center gap-4">
-        <img
+        <Image
           src={user.avatar_url}
           alt={user.login}
           className="w-20 h-20 rounded-full"

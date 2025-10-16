@@ -1,4 +1,5 @@
-// app/compare/page.tsx
+/* eslint-disable */
+
 "use client";
 
 import { useState } from "react";

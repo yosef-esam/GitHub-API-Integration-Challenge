@@ -1,4 +1,3 @@
-// components/RepoList.tsx
 "use client";
 
 import React from "react";
